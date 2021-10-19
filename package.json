@@ -36,5 +36,8 @@
     "prestart": "npm run build",
     "start": "tsc & node .",
     "dev": "tsc & nodemon ."
+  },
+  "engines": {
+    "node": "14.x"
   }
 }

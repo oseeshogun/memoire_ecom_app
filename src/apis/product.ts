@@ -1,20 +1,20 @@
-import { Express } from "express";
-import { Model, ModelCtor, Sequelize, Op } from "sequelize";
-import { products } from "../data/products";
+import { Express } from 'express';
+import { Model, ModelCtor, Sequelize, Op } from 'sequelize';
+import { products } from '../data/products';
 
 export default (
   app: Express,
   sequelize: Sequelize,
   Product: ModelCtor<Model<any, any>>
 ) => {
-  app.post("/create_articles/", (req, res) => {
+  app.post('/create_articles/', (req, res) => {
     for (let i = 0; i < products.length; i++) {
       const data: {} = products[i];
       Product.create(data);
     }
   });
 
-  app.post("/search/", (req, res) => {
+  app.post('/search/', (req, res) => {
     const { query } = req.body;
 
     Product.findAll({
@@ -29,7 +29,7 @@ export default (
           products.map((product) => {
             return {
               ...product.toJSON(),
-              images: JSON.parse(product.getDataValue("images")),
+              images: JSON.parse(product.getDataValue('images')),
             };
           })
         );
@@ -39,14 +39,14 @@ export default (
       });
   });
 
-  app.get("/populars/", (req, res) => {
+  app.get('/populars/', (req, res) => {
     Product.findAll()
       .then((products) => {
         return res.json(
           products.map((product) => {
             return {
               ...product.toJSON(),
-              images: JSON.parse(product.getDataValue("images")),
+              images: JSON.parse(product.getDataValue('images')),
             };
           })
         );

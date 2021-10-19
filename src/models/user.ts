@@ -1,7 +1,7 @@
-import { Model, Sequelize, DataTypes, ModelCtor } from "sequelize";
+import { Model, Sequelize, DataTypes, ModelCtor } from 'sequelize';
 
 export default (sequelize: Sequelize): ModelCtor<Model<any, any>> => {
-  const User = sequelize.define("user", {
+  const User = sequelize.define('user', {
     name: {
       type: DataTypes.STRING,
     },

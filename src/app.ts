@@ -1,15 +1,15 @@
-import express from "express";
-import config from "./config";
-import mysql from "mysql";
-import { Sequelize } from "sequelize";
+import express from 'express';
+import config from './config';
+import mysql from 'mysql';
+import { Sequelize } from 'sequelize';
 import path from 'path';
 
-import user from "./models/user";
-import product from "./models/product";
-import auth from "./apis/auth";
-import productApis from "./apis/product";
+import user from './models/user';
+import product from './models/product';
+import auth from './apis/auth';
+import productApis from './apis/product';
 
-const cors = require("cors");
+const cors = require('cors');
 const app = express();
 
 app.use(cors());
@@ -20,7 +20,7 @@ app.use(express.static('public'));
 // Create Mysql connection
 const sequelize = new Sequelize({
   database: config.MYSQL_DB,
-  dialect: "mysql",
+  dialect: 'mysql',
   username: config.MYSQL_USER,
   password: config.MYSQL_PASSWORD,
   host: config.MYSQL_HOST,
@@ -39,9 +39,9 @@ productApis(app, sequelize, Product);
 //   await sequelize.sync();
 // })();
 app.listen(config.PORT, function () {
-  console.log("server listening on port ", config.PORT);
+  console.log('server listening on port ', config.PORT);
 });
-function PoolOptions(): import("sequelize").PoolOptions {
-  throw new Error("Function not implemented.");
+function PoolOptions(): import('sequelize').PoolOptions {
+  throw new Error('Function not implemented.');
 }
 

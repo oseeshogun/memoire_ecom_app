@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config();
 
 interface EnvConfig {
   PORT: string | number;
@@ -12,11 +12,11 @@ interface EnvConfig {
   MYSQL_PORT: number;
 }
 
-const config:EnvConfig = {
+const config: EnvConfig = {
   ...process.env,
   PORT: process.env.PORT || 5500,
-  STATIC: "./public",
-  MYSQL_HOST: process.env.MYSQL_HOST || "localhost",
+  STATIC: './public',
+  MYSQL_HOST: process.env.MYSQL_HOST || 'localhost',
   MYSQL_USER: process.env.MYSQL_USER,
   MYSQL_PASSWORD: process.env.MYSQL_PASSWORD,
   MYSQL_DB: process.env.MYSQL_DB,

@@ -1,0 +1,20 @@
+POST http://127.0.0.1:5500/register/
+content-type: application/json
+
+{
+    "password": "monmotdepasse",
+    "email": "oseemasuaku@gmail.com"
+}
+
+###
+GET http://127.0.0.1:5500/populars/
+
+
+###
+POST http://127.0.0.1:5500/create_articles/
+content-type: application/json
+
+{
+    "password": "monmotdepasse",
+    "email": "oseemasuaku@gmail.com"
+}

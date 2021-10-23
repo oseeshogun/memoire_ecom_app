@@ -2,6 +2,10 @@ import { Express } from "express";
 import { Model, ModelCtor, Sequelize } from "sequelize";
 import hash from "password-hash";
 
+function removeEmpty(obj: Object): Object {
+  return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v != null));
+}
+
 export default (
   app: Express,
   sequelize: Sequelize,
@@ -73,20 +77,40 @@ export default (
       });
   });
 
+  app.post("/update/", (req, res) => {
+    const { email, key, value } = req.body;
+
+    User.findOne({ where: { email } })
+      .then((user) => {
+        User.update(
+          { [key]: value },
+          {
+            where: { email },
+          }
+        );
+        return res.json({ ...user.toJSON(), [key]: value });
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.sendStatus(500);
+      });
+
+    console.log(req.body);
+  });
+
   app.post("/update_user/", (req, res) => {
     const { email, name, prenom, address, phone } = req.body;
+
+    console.log(req.body);
 
     User.findOne({ where: { email } })
       .then((user) => {
         if (user == null) {
           return res.sendStatus(404);
         }
-        User.update(
-          { name, prenom, phone, address },
-          {
-            where: { email },
-          }
-        )
+        User.update(removeEmpty({ name, prenom, phone, address }), {
+          where: { email },
+        })
           .then((value) => {
             User.findOne({ where: { email } })
               .then((user) => {

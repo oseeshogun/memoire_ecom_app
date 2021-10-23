@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 exports.default = (sequelize) => {
-    const Product = sequelize.define("product", {
+    const Product = sequelize.define('product', {
         titre: {
             type: sequelize_1.DataTypes.STRING,
         },

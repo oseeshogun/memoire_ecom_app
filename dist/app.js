@@ -10,7 +10,7 @@ const user_1 = __importDefault(require("./models/user"));
 const product_1 = __importDefault(require("./models/product"));
 const auth_1 = __importDefault(require("./apis/auth"));
 const product_2 = __importDefault(require("./apis/product"));
-const cors = require("cors");
+const cors = require('cors');
 const app = (0, express_1.default)();
 app.use(cors());
 app.use(express_1.default.json()); // for parsing application/json
@@ -19,7 +19,7 @@ app.use(express_1.default.static('public'));
 // Create Mysql connection
 const sequelize = new sequelize_1.Sequelize({
     database: config_1.default.MYSQL_DB,
-    dialect: "mysql",
+    dialect: 'mysql',
     username: config_1.default.MYSQL_USER,
     password: config_1.default.MYSQL_PASSWORD,
     host: config_1.default.MYSQL_HOST,
@@ -35,9 +35,9 @@ const Product = (0, product_1.default)(sequelize);
 //   await sequelize.sync();
 // })();
 app.listen(config_1.default.PORT, function () {
-    console.log("server listening on port ", config_1.default.PORT);
+    console.log('server listening on port ', config_1.default.PORT);
 });
 function PoolOptions() {
-    throw new Error("Function not implemented.");
+    throw new Error('Function not implemented.');
 }
 //# sourceMappingURL=app.js.map

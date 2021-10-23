@@ -37,6 +37,6 @@ exports.checkJwt = (0, express_jwt_1.default)({
     // Validate the audience and the issuer.
     audience: process.env.AUTH0_AUDIENCE,
     issuer: `https://${process.env.AUTH0_DOMAIN}/`,
-    algorithms: ["RS256"]
+    algorithms: ['RS256']
 });
 //# sourceMappingURL=authz.middleware.js.map
